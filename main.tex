@@ -1,0 +1,466 @@
+\documentclass[conference]{IEEEtran}
+
+% -------------------------------------------------------
+% Paquetes
+% -------------------------------------------------------
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{fancyhdr}
+
+% -------------------------------------------------------
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\includegraphics[height=1.2cm]{uts_logonegro.png}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\setlength{\headheight}{1.5cm}
+
+% -------------------------------------------------------
+% CABECERA
+% -------------------------------------------------------
+\title{Boletín | Centro de Inteligencia Artificial e Innovación\\
+       \large Mes de octubre de 2026}
+
+\author{
+  \IEEEauthorblockN{Miguel Ángel Osorio Orduz}
+  \IEEEauthorblockN{Jhoan Sebastian Torres Garcia}
+  \IEEEauthorblockN{Frank Camilo Zuñiga Vargas}
+  \IEEEauthorblockA{Docente: Carlos Pineda}
+  \IEEEauthorblockA{
+    Centro de Inteligencia Artificial e Innovación (CIAI)\\
+    Colombia\\
+    mangelosorio@uts.edu.co\\
+    jhoanstorres@uts.edu.co\\
+    fczuniga@uts.edu.co
+  }
+}
+
+\maketitle
+\thispagestyle{fancy}
+
+% -------------------------------------------------------
+% RESUMEN
+% -------------------------------------------------------
+\begin{abstract}
+Esta primera edición del boletín del CIAI, cubre las novedades
+más relevantes en modelos de lenguaje de gran escala durante el mes
+de octubre de 2026. Se presentan lanzamientos de OpenAI,
+Anthropic, Google, Qwen y DeepSeek, junto con una comparativa de
+rendimiento y costo de los modelos más destacados según datos
+independientes de Artificial Analysis. También herramientas relevantes, noticias
+del mundo de los LLM's.
+\end{abstract}
+
+\begin{IEEEkeywords}
+LLMs, modelos de lenguaje, herramientas IA, CIAI, benchmarks, novedades
+\end{IEEEkeywords}
+
+% ===============================================================
+\section{Investigación}
+% ===============================================================
+
+Esta sección cubre los modelos y avances publicados durante la semana,
+junto con comparativas cuantitativas tomadas de plataformas de evaluación
+independientes.
+
+% -------------------------------------------------------
+\subsection{Nuevos Modelos}
+
+% -- OpenAI --------------------------------------------------
+\subsubsection{OpenAI}
+
+El 26 de octubre, OpenAI lanzó GPT-6.1 Terra en su API junto con
+ChatGPT Work y Codex. El modelo reduce los costos a la mitad respecto
+a GPT-6.1 Sol, e integra razonamiento visual y uso de computadoras.
+Simultáneamente presentaron la \textit{Decisions API} para aplicaciones
+responsivas. Previamente, durante el DevDay, habían revelado GPT-6.1
+Sol~\cite{gpt61terra}.
+
+El 29 de octubre, OpenAI amplió los límites de uso en los planes
+ChatGPT Pro (Pro~100 y Pro~500) y anunció la transición de GPTs
+personalizados hacia plugins, la expansión de GPT-6 a todos los planes
+y un nuevo enfoque en agentes autónomos mediante la \textit{Agents API}.
+También introdujeron nuevas voces para GPT-Live-1.1 y predicciones en
+Codex.
+
+En materia de seguridad, el 3 y 6 de octubre se reportaron incidentes
+donde agentes autónomos (GPT-6.1 Sol y GPT-6 Astra) evadieron y
+desactivaron herramientas de monitoreo interno, negando posteriormente
+las acciones realizadas. El 18 de octubre, OpenAI publicó un reporte
+detallando la interrupción de más de 20 operaciones cibernéticas globales
+e intentos de \textit{spear-phishing} desde China contra sus empleados.
+El 28 de octubre se registró una caída global de sus servicios~\cite{openaisecurity}.
+
+% -- Anthropic -----------------------------------------------
+\subsubsection{Anthropic}
+
+Anthropic presentó formalmente su formulario S-1 para cotizar en Nasdaq
+bajo el símbolo ``ANT'', buscando una valoración de entre \$1.5 y \$2
+billones. La compañía reportó ingresos de \$16.286 mil millones en el
+primer semestre de 2026, con más de 11.900 clientes corporativos.
+Registraron una pérdida contable de \$80.748 mil millones, impulsada
+por un cargo único de \$72.4 mil millones por notas convertibles. En el
+prospecto, advirtieron formalmente sobre los riesgos catastróficos o
+existenciales de la IA~\cite{anthropicipo}.
+
+El 27 y 28 de octubre anunciaron la expansión de su programa
+\textit{AI for Science} a 20 nuevas instituciones y revelaron avances
+tempranos en el desarrollo de fármacos. También lanzaron Claude
+Haiku~5.5, su modelo compacto de mayor rendimiento~\cite{claudehaiku55}.
+
+% -- Google Gemini -------------------------------------------
+\subsubsection{Google Gemini}
+
+El 28 de octubre, Google anunció Gemini~4 Carbon, modelo enfocado en
+ciberseguridad y tareas prolongadas de programación, con acceso
+restringido a defensores cibernéticos y socios del programa Fairwind.
+El 13 de octubre se habilitó el acceso general a Gemini~4 Argon para
+suscriptores y desarrolladores, integrando el sistema \textit{Antigravity}
+en la app de macOS~\cite{gemini4carbon}.
+
+El 30 de octubre, Google introdujo la edición de documentos (Docs,
+Sheets, Code, PDF) a pantalla completa directamente en el chat. La
+función \textit{Gems} comenzó su transición para convertirse en
+\textit{Skills} en noviembre, sumando integración con más de 40
+aplicaciones~\cite{geminieco}.
+
+% -- Qwen ----------------------------------------------------
+\subsubsection{Qwen}
+
+El 27 de octubre, Alibaba lanzó \texttt{qwen-audio-3.1-realtime-flash},
+modelo de voz bidireccional con 262K tokens de contexto, búsqueda web
+y clonación de voz. El 2 y 9 de octubre publicaron las versiones
+\textit{pro} y \textit{turbo} de su modelo de generación visual
+Qwen-Image-2.1~\cite{qwenaudio}.
+
+Adicionalmente, se reportaron pruebas en la plataforma Arena del modelo
+``Kalmia'', que se especula es la versión preliminar de Qwen~4.
+
+% -- DeepSeek ------------------------------------------------
+\subsubsection{DeepSeek}
+
+DeepSeek levantó \$15 mil millones con apoyo de Tencent y CATL,
+alcanzando una valoración pre-money de \$74 mil millones, y aceleró
+sus planes para una IPO en el mercado STAR de Shanghái para 2027.
+Esta financiación ocurrió días después de que el gobierno de EE.~UU.
+ordenara a agencias federales civiles eliminar la tecnología de DeepSeek
+de sus infraestructuras~\cite{deepseekfunding}.
+
+El 17 de octubre actualizaron DeepSeek V3 con mayor velocidad y menor
+cómputo. Posteriormente lanzaron DeepSeek-V4.1-Flash, que integra
+comprensión visual nativa y reemplaza a la generación V4. Su API ahora
+soporta el formato nativo de Responses de OpenAI~\cite{deepseekv4}.
+
+% -------------------------------------------------------
+\subsection{Analítica de Rendimiento}
+
+Datos de costo y latencia tomados de Artificial~Analysis para los modelos
+más relevantes lanzados o actualizados esta semana~\cite{artificialanalysis}.
+El TTFT corresponde al modo de esfuerzo estándar o bajo según disponibilidad.
+Gemini~4 Carbon no tiene precio público de API (acceso restringido Fairwind).
+
+\begin{table}[h]
+\centering
+\caption{Comparativa de Costo y Latencia -- Octubre 2026}
+\label{tab:comparativa}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Modelo} & \textbf{Input} & \textbf{Output} & \textbf{TTFT} & \textbf{Tok/s} \\
+                & (\$/1M tok.)   & (\$/1M tok.)    & (s)           &                \\
+\midrule
+GPT-6.1 Terra      & 1.00  & 5.00  & 1.29  & 91  \\
+Claude Haiku 5.5   & 0.10  & 0.50  & 1.22  & 240 \\
+Gemini 4 Argon     & 2.00  & 10.00 & N/D   & N/D \\
+Gemini 4 Carbon    & --*   & --*   & 97.48 & 99.8 \\
+DeepSeek V4.1 Flash & 0.15 & 0.60  & N/D   & N/D \\
+Qwen3.8 Max        & 2.00  & 6.00  & 1.95  & 54  \\
+\bottomrule
+\multicolumn{5}{@{}l}{\footnotesize *Acceso restringido; sin precio público.} \\
+\multicolumn{5}{@{}l}{\footnotesize Gemini 4 Argon: precio introductorio hasta nov.~30, 2026.} \\
+\multicolumn{5}{@{}l}{\footnotesize DeepSeek V4.1 Flash: tarifa off-peak; peak \$0.30/\$1.20.} \\
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\columnwidth,
+  height=5.5cm,
+  ybar,
+  symbolic x coords={
+    GPT-6.1 Terra,
+    Haiku 5.5,
+    Gemini 4 Argon,
+    DS V4.1 Flash,
+    Qwen3.8 Max
+  },
+  xtick=data,
+  ylabel={Costo input (\$/1M tok.)},
+  ymin=0,
+  bar width=0.35cm,
+  nodes near coords,
+  nodes near coords align={vertical},
+  enlarge x limits=0.15,
+  x tick label style={font=\tiny, rotate=30, anchor=east},
+]
+\addplot coordinates {
+  (GPT-6.1 Terra,    1.00)
+  (Haiku 5.5,        0.10)
+  (Gemini 4 Argon,   2.00)
+  (DS V4.1 Flash,    0.15)
+  (Qwen3.8 Max,      2.00)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Costo de entrada por millón de tokens (modelos con precio
+público disponible). Fuente: Artificial~Analysis, oct.~2026.}
+\label{fig:costo}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\columnwidth,
+  height=5.5cm,
+  ybar,
+  symbolic x coords={
+    GPT-6.1 Terra,
+    Haiku 5.5,
+    Gemini 4 Carbon,
+    Qwen3.8 Max
+  },
+  xtick=data,
+  ylabel={TTFT (s)},
+  ymin=0,
+  bar width=0.35cm,
+  nodes near coords,
+  nodes near coords align={vertical},
+  enlarge x limits=0.15,
+  x tick label style={font=\tiny, rotate=30, anchor=east},
+]
+\addplot coordinates {
+  (GPT-6.1 Terra,    1.29)
+  (Haiku 5.5,        1.22)
+  (Gemini 4 Carbon, 97.48)
+  (Qwen3.8 Max,      1.95)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Time to First Token (TTFT) en segundos, esfuerzo estándar/bajo.
+Gemini~4 Carbon opera en modo razonamiento extendido, lo que explica su
+TTFT elevado. Fuente: Artificial~Analysis, oct.~2026.}
+\label{fig:ttft}
+\end{figure}
+
+% ===============================================================
+\section{Herramientas}
+% ===============================================================
+
+Herramientas, extensiones y entornos de creación publicados o
+actualizados este mes. Enfoque en opciones gratuitas y no comerciales.
+
+% -------------------------------------------------------
+\subsection{OpenCut}
+
+OpenCut es un editor de video de código abierto bajo licencia MIT,
+diseñado como alternativa directa a CapCut. Corre enteramente en el
+navegador mediante WebAssembly, sin requerir cuenta ni subir archivos
+a servidores externos. Su arquitectura está basada en Next.js para la
+web, con un núcleo compartido en Rust para composición GPU, efectos y
+máscaras. En mayo de 2026 el equipo inició una reescritura completa
+con arquitectura orientada a plugins y una API headless planificada.
+A octubre de 2026 el proyecto acumula más de 93.000 estrellas en GitHub
+y se encuentra en estado pre-lanzamiento activo~\cite{opencut}.
+
+\begin{itemize}
+  \item \textbf{Tipo:} Aplicación web / desktop (en desarrollo)
+  \item \textbf{Licencia:} MIT
+  \item \textbf{Web:} \url{https://opencut.app}
+  \item \textbf{Repositorio:} \url{https://github.com/OpenCut-app/OpenCut}
+\end{itemize}
+
+% -------------------------------------------------------
+\subsection{Lemon Studio}
+
+Lemon Studio es una estación de trabajo de audio digital (DAW)
+de código abierto, escrita completamente en Rust. Está diseñada
+como alternativa libre a FL Studio, con la que mantiene
+interoperabilidad directa: abre y guarda proyectos \texttt{.flp}
+de FL Studio 24.2 en adelante de forma no destructiva. Incluye
+secuenciador por pasos, piano roll completo, mezclador con ruteo,
+y soporte para plugins CLAP y VST3. Corre en Windows, Linux y
+macOS. El proyecto se encuentra en estado pre-alpha; aún no
+distribuye binarios compilados y debe construirse desde el código
+fuente~\cite{lemonstudio}.
+
+\begin{itemize}
+  \item \textbf{Tipo:} Aplicación desktop (DAW)
+  \item \textbf{Licencia:} GPL-3.0
+  \item \textbf{Repositorio:} \url{https://github.com/ItsAlphaNeon/Lemon-Studio}
+\end{itemize}
+
+% -------------------------------------------------------
+\subsection{ArtCraft}
+
+ArtCraft es un ecosistema de herramientas de escritorio de código
+abierto construidas en Rust, desarrollado por el equipo de Storytold.
+Se divide en dos productos principales~\cite{artcraft}:
+
+\textbf{Crafting Apps:} trece aplicaciones nativas para flujos de
+trabajo creativos y de oficina, instalables mediante el ArtCraft
+Launcher. Cubren edición de imágenes (PhotoCraft), ilustración
+vectorial (VectorCraft), edición de video (FilmCraft), ajuste de
+color (LightCraft), PDF (PdfCraft), efectos visuales (EffectCraft),
+diseño gráfico (DesignCraft), diseño de interfaces (FigCraft),
+procesamiento de texto (WordCraft), audio (SoundCraft), presentaciones
+(DeckCraft), modelado CAD (CADCraft) y hojas de cálculo (GridCraft).
+Son equivalentes funcionales de las suites de Adobe y Microsoft
+Office, sin suscripción ni costo.
+
+\textbf{ArtCraft Studio:} aplicación de generación de imágenes y
+video con IA. Permite componer escenas en un canvas 2D/3D antes de
+invocar el modelo generativo, dando control real sobre posición de
+personajes, perspectiva, capas y assets mixtos. Soporta modelos como
+Seedance 2.5, Nano Banana 2, Kling y otros. Disponible como app de
+escritorio y en el navegador sin instalación.
+
+Ambos productos son gratuitos, sin suscripción y de código abierto.
+
+\begin{itemize}
+  \item \textbf{Tipo:} Suite de aplicaciones desktop + estudio IA generativa
+  \item \textbf{Licencia:} MIT / Apache 2.0
+  \item \textbf{Web:} \url{https://getartcraft.com}
+  \item \textbf{Launcher:} \url{https://github.com/storytold/craft-launcher}
+  \item \textbf{Studio:} \url{https://github.com/storytold/artcraft}
+  \item \textbf{App web:} \url{https://app.getartcraft.com}
+\end{itemize}
+
+% -------------------------------------------------------
+\subsection{OpenIDEA}
+
+OpenIDEA es un entorno de desarrollo integrado (IDE) de código abierto
+construido en Rust y TypeScript sobre Tauri, diseñado como alternativa
+nativa y ligera a IntelliJ IDEA. Adopta los atajos de teclado, ventanas
+de herramientas y la filosofía de búsqueda global de los IDEs de
+JetBrains, sin afiliación con esa empresa~\cite{openidea}.
+
+Integra editor, inteligencia de código (LSP), depurador, herramientas
+de Git, terminal, cliente de bases de datos y cliente HTTP nativo.
+Soporta más de 60 lenguajes de programación y cuenta con versiones para
+macOS, Windows y Linux.
+
+En rendimiento, abriendo un proyecto Python de 770 archivos frente a
+IntelliJ IDEA 2026.2.3: carga la ventana en 0.9s (vs. 3.1s), consume
+169~MB de RAM (vs. más de 2000~MB) y estabiliza el CPU en 1.1s
+(vs. más de 13s). La versión más reciente es la v0.1.28.
+
+\begin{itemize}
+  \item \textbf{Tipo:} IDE de escritorio
+  \item \textbf{Licencia:} Apache 2.0
+  \item \textbf{Repositorio:} \url{https://github.com/l0ng-ai/openidea}
+\end{itemize}
+
+% ===============================================================
+\section{Proyectos CIAI}
+% ===============================================================
+
+Avances, publicaciones y actividades del Centro de Inteligencia
+Artificial e Innovación durante la semana.
+
+% -------------------------------------------------------
+\subsection{[Nombre del Proyecto 1]}
+
+[Descripción del avance, estado actual, próximos pasos y personas
+involucradas.]
+
+% ===============================================================
+\section{Noticias}
+% ===============================================================
+
+Eventos relevantes de la industria de la
+Ingeniería de sistemas y afines.
+
+% -------------------------------------------------------
+\subsection{REA: Reverse Engineer Anything alcanza 234.000 estrellas en GitHub}
+
+REA (\textit{Reverse Engineer Anything}) es un proyecto de código
+abierto bajo licencia MIT que permite a un agente de IA, como Claude
+Code, Codex o Cursor, analizar binarios compilados sin acceso al
+código fuente. El repositorio \texttt{morluto/rea} fue creado el 14
+de abril de 2026 y en octubre superó las 234.000 estrellas y 58.000
+forks, convirtiéndose en uno de los proyectos de mayor crecimiento
+en la historia reciente de GitHub~\cite{rea}.
+Este proyecto se volvió ultra famoso en octubre de 2026, como
+ayuda para crear aplicaciones con Ingeniería Inversa.
+
+El proyecto no es un decompilador: utiliza al agente de IA para
+reconstruir el comportamiento de funciones a partir de instrucciones,
+cadenas de texto y patrones observables en el binario. Se instala
+vía \texttt{npx rea-agents setup} y requiere Node.js 22.19 o superior.
+
+Durante la semana del 13 de octubre se detectó un repositorio
+falso bajo la organización \texttt{rea-tools} que copiaba el README
+y distribuía un troyano en un ejecutable \texttt{.exe} para Windows.
+El README oficial fue actualizado para advertir que REA debe obtenerse
+únicamente desde \texttt{github.com/morluto/rea}, el sitio
+\texttt{rea.tools} o el paquete npm \texttt{rea-agents}~\cite{rea}.
+
+\begin{itemize}
+  \item \textbf{Repositorio oficial:} \url{https://github.com/morluto/rea}
+  \item \textbf{Sitio:} \url{https://rea.tools}
+  \item \textbf{Paquete npm:} \texttt{rea-agents}
+\end{itemize}
+
+% -------------------------------------------------------
+\subsection{OpenIDEA entra en GitHub Trending con rendimiento
+superior a IntelliJ}
+
+OpenIDEA acumuló más de 3.500 estrellas y 290 forks en GitHub en
+pocas semanas, impulsado por benchmarks que muestran una reducción
+del 91\,\% en consumo de RAM y tiempos de carga hasta 3.4 veces
+más rápidos frente a IntelliJ IDEA 2026.2.3~\cite{openidea}. El
+proyecto se encuentra en desarrollo activo: los commits más recientes
+incluyen soporte para arrastrar pestañas como ventanas independientes,
+espacios de trabajo multiproyecto, mejoras en LSP para auto-importaciones
+de archivos no abiertos, y soporte de sintaxis mejorado para Angular,
+Kotlin, Scala y Dart.
+
+% -------------------------------------------------------
+\subsection{Character.AI se acoge al Capítulo 11 de bancarrota}
+
+El 12 de octubre de 2026, Character Technologies, empresa detrás de
+Character.AI, se acogió voluntariamente al Capítulo~11 de la ley de
+bancarrotas en Delaware. Su director ejecutivo atribuyó la situación
+a ``importantes vientos en contra legales, regulatorios y operativos''.
+La compañía lleva a cabo un proceso de venta supervisado por el
+tribunal, con cierre esperado entre finales de noviembre y principios
+de diciembre de 2026~\cite{characterai}.
+
+A pesar del procedimiento legal, la plataforma permanece en línea.
+Los usuarios conservan la opción de eliminar sus cuentas o exportar
+su información desde la app o el sitio web. Entre sus funciones
+recientes destaca \textit{Breaking News Character}, un presentador
+impulsado por IA para titulares y comentarios sobre eventos actuales.
+
+% -------------------------------------------------------
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+\end{document}
