@@ -1,0 +1,345 @@
+\documentclass[conference]{IEEEtran}
+
+% -------------------------------------------------------
+% Paquetes
+% -------------------------------------------------------
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{fancyhdr}
+
+% -------------------------------------------------------
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\includegraphics[height=1.2cm]{assets/uts_logonegro.png}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\setlength{\headheight}{1.5cm}
+
+% -------------------------------------------------------
+% CABECERA
+% -------------------------------------------------------
+\title{Acerca del Boletín | Centro de Inteligencia Artificial e Innovación\\
+       \large Documento institucional del proyecto BCIAI}
+
+\author{
+  \IEEEauthorblockN{Miguel Ángel Osorio Orduz}
+  \IEEEauthorblockN{Jhoan Sebastian Torres Garcia}
+  \IEEEauthorblockN{Frank Camilo Zuñiga Vargas}
+  \IEEEauthorblockA{Docente orientador: Carlos Pineda}
+  \IEEEauthorblockA{
+    Centro de Inteligencia Artificial e Innovación (CIAI)\\
+    Unidades Tecnológicas de Santander --- Colombia\\
+    mangelosorio@uts.edu.co\\
+    jhoanstorres@uts.edu.co\\
+    fczuniga@uts.edu.co
+  }
+}
+
+\maketitle
+\thispagestyle{fancy}
+
+% -------------------------------------------------------
+% RESUMEN
+% -------------------------------------------------------
+\begin{abstract}
+Este documento presenta el Boletín del Centro de Inteligencia Artificial
+e Innovación (BCIAI): sus objetivos, su justificación ante la acelerada
+evolución de los modelos de lenguaje de gran escala (LLMs), sus equipos
+docente y estudiantil, el uso de \LaTeX{}, Bib\TeX{} y archivos
+\texttt{.tex} para publicarlo, su repositorio público y su licencia GNU
+GPL versión~3 (GPL-3.0).
+\end{abstract}
+
+\begin{IEEEkeywords}
+CIAI, boletín, inteligencia artificial, LLMs, modelos de lenguaje,
+\LaTeX{}, Bib\TeX{}, GPL-3.0, publicación académica, UTS
+\end{IEEEkeywords}
+
+% ===============================================================
+\section{¿Qué es el Boletín CIAI?}
+% ===============================================================
+
+El BCIAI es una publicación mensual de estudiantes de Tecnología en
+Desarrollo de Sistemas Informáticos de las Unidades Tecnológicas de
+Santander (UTS), acompañados por docentes del CIAI\@. Difunde los avances
+más relevantes en inteligencia artificial ---sobre todo LLMs---,
+ingeniería de software y tecnologías afines.
+
+Cada edición cubre cuatro ejes: (1)~investigación y nuevos modelos de IA,
+con comparativas de rendimiento y costo; (2)~herramientas de código
+abierto; (3)~proyectos del CIAI; y (4)~noticias globales del sector. Las
+ediciones quedan archivadas con acceso libre en el repositorio
+oficial~\cite{repo}.
+
+Nació para dar al CIAI un canal propio de seguimiento a la IA, producido
+por quienes trabajan con ella y no solo consumido de fuentes externas,
+lo que le da un carácter formativo y editorial.
+
+% ===============================================================
+\section{Por qué Existe este Boletín: El Contexto de los LLMs}
+% ===============================================================
+
+Los LLMs pasaron en muy poco tiempo de la investigación especializada a
+infraestructura de uso masivo, un ritmo sin precedentes que desafía a
+cualquier institución que quiera mantenerse al día.
+
+% -------------------------------------------------------
+\subsection{La velocidad de cambio en el ecosistema de LLMs}
+
+Hasta 2022 los modelos de lenguaje eran herramientas de investigación.
+ChatGPT, lanzado en noviembre de ese año, alcanzó 100 millones de usuarios
+en menos de dos meses ---la aplicación de consumo de más rápido
+crecimiento de la historia---, y desde entonces los lanzamientos se
+aceleran.
+
+Hoy OpenAI, Anthropic, Google, Meta, Alibaba (Qwen), Mistral, DeepSeek y
+otros publican modelos cada pocas semanas o días, con mejoras
+multimodales, de contexto, razonamiento, costo por token, agentes o APIs.
+Un modelo de frontera puede quedar superado al mes siguiente.
+Ningún programa de estudios tradicional absorbe estos cambios en tiempo
+real; el boletín cubre esa brecha con un registro mensual curado y
+analizado.
+
+% -------------------------------------------------------
+\subsection{La necesidad de un registro sistemático}
+
+La información sobre LLMs está dispersa entre blogs y repositorios de los
+laboratorios, benchmarks como Artificial Analysis o LMSYS Chatbot Arena y
+decenas de medios especializados; sin síntesis, seguirla es caótico.
+
+Cada edición captura el estado del ecosistema en un momento dado, y el
+
+% -------------------------------------------------------
+\subsection{LLMs, herramientas y proyectos: tres dimensiones del mismo ecosistema}
+
+La sección de herramientas cubre editores, IDEs, entornos de desarrollo,
+aplicaciones creativas y utilidades abiertas impulsadas por la IA\@; la
+de proyectos CIAI conecta lo global con lo local; y la de noticias
+aporta el contexto empresarial, regulatorio y de seguridad.
+
+% -------------------------------------------------------
+\subsection{El valor formativo de producir el boletín}
+
+Cada ciclo exige identificar fuentes primarias confiables, leer
+documentación técnica en inglés, contrastar datos de evaluaciones
+independientes, sintetizar con rigor y usar \LaTeX{}, Git y revisión
+colaborativa.
+
+Practicarlo con plazos reales y un producto público acelera el
+aprendizaje más que la teoría: es formación continua en forma de
+publicación mensual.
+
+% ===============================================================
+\section{Fin y Propósito del Boletín}
+% ===============================================================
+
+El boletín busca: fortalecer las competencias investigativas de los
+estudiantes mediante la lectura crítica y síntesis de fuentes; crear un
+registro histórico de la IA con criterio académico, útil como insumo
+bibliográfico para la comunidad UTS\@; y proyectar el CIAI como espacio
+de innovación en Bucaramanga y la región santandereana.
+
+Es divulgativo y formativo, no sustituye publicaciones arbitradas ni
+pretende exhaustividad: prioriza lo relevante para estudiantes y
+profesionales de sistemas informáticos.
+
+% ===============================================================
+\section{Equipo Docente}
+% ===============================================================
+
+La orientación editorial y temática está a cargo de docentes del CIAI en
+la UTS\@. El responsable principal es:
+
+\begin{itemize}
+  \item \textbf{Carlos Pineda} --- Docente orientador del CIAI, UTS\@.
+        Dirige académicamente el proyecto, valida contenidos y aprueba
+        cada edición.
+\end{itemize}
+
+Los docentes definen lineamientos, aseguran la pertinencia académica y
+acompañan a los estudiantes; no redactan, sino que validan el rigor y la
+coherencia con los objetivos pedagógicos del CIAI\@.
+
+% ===============================================================
+\section{Equipo Estudiantil}
+% ===============================================================
+
+El contenido lo producen estos integrantes del CIAI, estudiantes de
+Tecnología en Desarrollo de Sistemas Informáticos de la UTS:
+
+\begin{itemize}
+  \item \textbf{Miguel Ángel Osorio Orduz}
+        (\texttt{mangelosorio@uts.edu.co}) --- Nuevos modelos de
+        lenguaje, comparativas de rendimiento y lanzamientos de los
+        principales laboratorios de IA\@.
+
+  \item \textbf{Jhoan Sebastian Torres Garcia}
+        (\texttt{jhoanstorres@uts.edu.co}) --- Herramientas de código
+        abierto, noticias del sector y proyectos en GitHub.
+
+  \item \textbf{Frank Camilo Zuñiga Vargas}
+        (\texttt{fczuniga@uts.edu.co}) --- Proyectos internos del CIAI,
+        repositorio e infraestructura de publicación en \LaTeX{} y Git.
+\end{itemize}
+
+Los integrantes rotan responsabilidades entre ediciones para que todos
+dominen cada eje temático.
+
+% ===============================================================
+\section{Justificación del Uso de \LaTeX{}, Bib\TeX{} y Archivos \texttt{.tex}}
+% ===============================================================
+
+\LaTeX{} se eligió por criterios técnicos, académicos y de
+mantenibilidad.
+
+% -------------------------------------------------------
+\subsection{\LaTeX{} como sistema de composición}
+
+\LaTeX{}, basado en el motor \TeX{} de Donald Knuth y extendido por
+Leslie Lamport~\cite{lamport}, separa contenido y presentación, a
+diferencia de los procesadores \textit{What You See Is What You Get}
+(WYSIWYG), y logra una tipografía consistente sin ajustes manuales.
+
+Aporta control de la maquetación a doble columna (\texttt{IEEEtran}),
+buen renderizado de matemáticas y tablas, diffs legibles en Git por ser
+texto plano y salida reproducible.
+
+Con la misma versión del motor, un \texttt{.tex} produce un PDF bit a
+bit idéntico en cualquier sistema, a diferencia de un \texttt{.docx};
+esto es clave para un archivo histórico duradero.
+
+% -------------------------------------------------------
+\subsection{Bib\TeX{} para la gestión de referencias}
+
+Bib\TeX{}, el gestor bibliográfico estándar de \LaTeX{}~\cite{lamport},
+guarda las referencias en archivos \texttt{.bib} con campos (autor,
+título, año, URL, etc.); el compilador resuelve las citas y genera la
+bibliografía en el estilo indicado (\texttt{IEEEtran}), solo con las
+entradas citadas.
+
+Cada referencia se define una vez y se reutiliza entre ediciones,
+permitiendo corregir datos o cambiar el estilo sin tocar el texto.
+
+Con muchas referencias, \texttt{referencias.bib} va aparte de
+\texttt{main.tex}, como en la edición de octubre de
+2026~\cite{ediciones}; con pocas, como aquí, se usa
+\texttt{thebibliography}.
+
+% -------------------------------------------------------
+\subsection{Organización en archivos \texttt{.tex} modulares}
+
+Dividir el documento con \verb|\input{}| o \verb|\include{}| separa
+secciones, figuras y configuraciones en unidades versionadas por
+separado en el repositorio~\cite{repo}, de modo que varios integrantes
+editen a la vez sin conflictos de fusión (\textit{merge conflicts}).
+
+Por ejemplo, tres autores pueden editar \texttt{investigacion.tex},
+\texttt{herramientas.tex} o \texttt{noticias.tex} mientras
+\texttt{main.tex} solo los ensambla con \verb|\include{}|; Git registra
+quién cambió qué sección y cuándo.
+
+Los documentos sencillos o institucionales, como este, usan un único
+\texttt{main.tex}.
+
+% -------------------------------------------------------
+\subsection{Ventajas frente a alternativas}
+
+Frente a Word o Google Docs, \LaTeX{} ofrece maquetación estable en
+documentos extensos, clases de conferencias y revistas como
+\texttt{IEEEtran} y trazabilidad con Git; su mayor curva de aprendizaje
+se justifica donde la calidad tipográfica y la reproducibilidad son
+requisitos.
+
+Además, es el estándar de facto de la publicación científica en
+matemáticas, física, computación e ingeniería, una habilidad
+transferible a artículos arbitrados.
+
+% ===============================================================
+\section{Repositorio y Estructura de Ediciones}
+% ===============================================================
+
+Las fuentes se alojan en el repositorio público \texttt{mikel-btw/bciai}
+en GitHub~\cite{repo}. En \texttt{ediciones/}, cada edición tiene una
+carpeta \texttt{AAAA-MM/} con su \texttt{main.tex} y, si aplica,
+\texttt{referencias.bib} y activos gráficos~\cite{ediciones}.
+
+Así, cada edición se compila de forma autónoma; Git conserva la autoría
+de cada línea; y cualquiera puede leer, clonar, reportar errores o
+proponer mejoras mediante \textit{issues} y \textit{pull requests}.
+
+Cada integrante trabaja en su rama (\textit{branch}) y abre un
+\textit{pull request} hacia la principal, que revisan el docente y el
+equipo antes de fusionar, igual que en el software profesional.
+
+% ===============================================================
+\section{Licencia}
+% ===============================================================
+
+Todo el contenido del repositorio ---textos, archivos \texttt{.tex} y
+\texttt{.bib} y activos gráficos propios--- se distribuye bajo la Licencia
+Pública General GNU versión 3.0 (GPL-3.0)~\cite{licencia}.
+
+La GPL-3.0 garantiza las libertades de usar, estudiar, modificar y
+redistribuir el material, y su \textit{copyleft} obliga a distribuir los
+trabajos derivados bajo los mismos términos, impidiendo su apropiación
+restrictiva.
+
+Esto es coherente con el compromiso del CIAI con el conocimiento libre y
+con la preferencia editorial del boletín por el código abierto y la
+transparencia.
+
+La licencia completa está en el archivo \texttt{LICENSE} del
+repositorio~\cite{licencia}.
+
+% -------------------------------------------------------
+\begin{thebibliography}{9}
+
+\bibitem{repo}
+  mikel-btw,
+  \textit{BCIAI --- Boletín del Centro de Inteligencia Artificial e
+  Innovación},
+  GitHub, 2026.
+  Disponible en: \url{https://github.com/mikel-btw/bciai}
+
+\bibitem{ediciones}
+  mikel-btw,
+  \textit{Carpeta de ediciones del repositorio BCIAI},
+  GitHub, 2026.
+  Disponible en:
+  \url{https://github.com/mikel-btw/bciai/tree/main/ediciones}
+
+\bibitem{licencia}
+  Free Software Foundation,
+  \textit{GNU General Public License, version 3},
+  FSF, 2007.
+  Disponible en: \url{https://www.gnu.org/licenses/gpl-3.0.html}.
+  Texto del repositorio:
+  \url{https://github.com/mikel-btw/bciai/blob/main/LICENSE}
+
+\bibitem{lamport}
+  L.~Lamport,
+  \textit{\LaTeX: A Document Preparation System},
+  2nd~ed.
+  Addison-Wesley, 1994.
+
+\end{thebibliography}
+
+\end{document}Así, el boletín entrena a autores y lectores a entender el campo como un
+sistema y no como anuncios aislados.
+
+
+Conocer solo los modelos da una visión incompleta, por lo que el boletín
+integra también las herramientas y proyectos que los rodean.
+conjunto forma un archivo histórico para trazar la evolución del campo y
+citar hechos fechados en investigaciones, monografías o análisis de
+tendencias.
+
