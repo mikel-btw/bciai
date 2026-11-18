@@ -1,28 +1,34 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[conference,twocolumn,spanish]{IEEEtran}
 
-% -------------------------------------------------------
-% Paquetes
-% -------------------------------------------------------
-\usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{hyperref}
-\usepackage{url}
 \usepackage{fancyhdr}
 
-% -------------------------------------------------------
-\begin{document}
+% Metadatos internos del documento PDF
+\hypersetup{
+    pdftitle={Acerca del Boletín | Centro de Inteligencia Artificial e Innovación -- Documento institucional del proyecto BCIAI},
+    pdfauthor={Miguel Ángel Osorio Orduz; Jhoan Sebastian Torres Garcia; Frank Camilo Zuñiga Vargas; Docentes: Carlos Alfonso Pineda Ortiz, Diego Alexander Cruz Melo},
+    pdfsubject={Documento institucional del Boletín del Centro de Inteligencia Artificial e Innovación (BCIAI - UTS)},
+    pdfkeywords={CIAI, boletín, inteligencia artificial, LLMs, modelos de lenguaje, LaTeX, BibTeX, GPL-3.0, publicación académica, UTS},
+    pdfcreator={LaTeX con clase IEEEtran},
+    pdfproducer={Centro de Inteligencia Artificial e Innovación (CIAI) - Unidades Tecnológicas de Santander}
+}
 
+% Configuración de encabezado y pie de página institucional
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{\includegraphics[height=1.2cm]{assets/uts_logonegro.png}}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.0pt}
-\setlength{\headheight}{1.5cm}
+\fancyhead[L]{\small Acerca del Boletín CIAI -- Documento institucional BCIAI}
+\fancyhead[R]{\includegraphics[height=0.8cm]{assets/uts_logonegro.png}}
+\fancyfoot[L]{\scriptsize \copyright~2026 CIAI -- UTS | Proyecto BCIAI}
+\fancyfoot[R]{\scriptsize \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.2pt}
 
 % -------------------------------------------------------
 % CABECERA
@@ -43,6 +49,8 @@
     fczuniga@uts.edu.co
   }
 }
+
+\begin{document}
 
 \maketitle
 \thispagestyle{fancy}
@@ -117,9 +125,15 @@ laboratorios, benchmarks como Artificial Analysis o LMSYS Chatbot Arena y
 decenas de medios especializados; sin síntesis, seguirla es caótico.
 
 Cada edición captura el estado del ecosistema en un momento dado, y el
+conjunto forma un archivo histórico para trazar la evolución del campo y
+citar hechos fechados en investigaciones, monografías o análisis de
+tendencias.
 
 % -------------------------------------------------------
 \subsection{LLMs, herramientas y proyectos: tres dimensiones del mismo ecosistema}
+
+Conocer solo los modelos da una visión incompleta, por lo que el boletín
+integra también las herramientas y proyectos que los rodean.
 
 La sección de herramientas cubre editores, IDEs, entornos de desarrollo,
 aplicaciones creativas y utilidades abiertas impulsadas por la IA\@; la
@@ -136,7 +150,8 @@ colaborativa.
 
 Practicarlo con plazos reales y un producto público acelera el
 aprendizaje más que la teoría: es formación continua en forma de
-publicación mensual.
+publicación mensual. Así, el boletín entrena a autores y lectores a
+entender el campo como un sistema y no como anuncios aislados.
 
 % ===============================================================
 \section{Fin y Propósito del Boletín}
@@ -333,13 +348,4 @@ repositorio~\cite{licencia}.
 
 \end{thebibliography}
 
-\end{document}Así, el boletín entrena a autores y lectores a entender el campo como un
-sistema y no como anuncios aislados.
-
-
-Conocer solo los modelos da una visión incompleta, por lo que el boletín
-integra también las herramientas y proyectos que los rodean.
-conjunto forma un archivo histórico para trazar la evolución del campo y
-citar hechos fechados en investigaciones, monografías o análisis de
-tendencias.
-
+\end{document}
