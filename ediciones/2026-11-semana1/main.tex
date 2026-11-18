@@ -1,0 +1,318 @@
+\documentclass[conference,twocolumn,spanish]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{hyperref}
+\usepackage{cite}
+
+% Metadatos internos del documento PDF (incluye derechos y licencia CC BY-NC-ND 4.0)
+\hypersetup{
+    pdftitle={Boletín | Centro de Inteligencia Artificial e Innovación -- Semana del 4 al 11 de noviembre de 2026},
+    pdfauthor={Miguel Ángel Osorio Orduz; Jhoan Sebastian Torres Garcia; Frank Camilo Zuñiga Vargas; Docentes: Carlos Alfonso Pineda Ortiz, Diego Alexander Cruz Melo},
+    pdfsubject={Boletín Semanal de Vigilancia Tecnológica en Inteligencia Artificial (CIAI - UTS)},
+    pdfkeywords={Inteligencia Artificial, LLM, CIAI, UTS, Vigilancia Tecnológica, Benchmarks},
+    pdfcreator={LaTeX con clase IEEEtran},
+    pdfproducer={Centro de Inteligencia Artificial e Innovación (CIAI) - Unidades Tecnológicas de Santander},
+    pdfcopyright={Copyright (C) 2026 CIAI - UTS. Licencia Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional (CC BY-NC-ND 4.0).},
+    pdflicenseurl={https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es}
+}
+
+% Configuración de encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Boletín Semanal CIAI -- Edición 4 al 11 de noviembre de 2026}
+\fancyhead[R]{\includegraphics[height=0.8cm]{assets/uts_logonegro.png}}
+\fancyfoot[L]{\scriptsize \copyright~2026 CIAI -- UTS | Licencia \href{https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es}{CC BY-NC-ND 4.0} (Uso académico, no comercial, sin derivadas)}
+\fancyfoot[R]{\scriptsize \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.2pt}
+
+% Macro dinámica para gráficas de avance (0% a 100%) de los Proyectos CIAI
+% Uso: \graficaavanceproyecto{Título corto}{Hito4,Hito3,Hito2,Hito1}{{(Hito4,0) (Hito3,25) (Hito2,70) (Hito1,100)}}
+\newcommand{\graficaavanceproyecto}[3]{%
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xbar,
+    width=0.92\columnwidth,
+    height=3.6cm,
+    bar width=7pt,
+    xlabel={Porcentaje de avance (\%)},
+    xmin=0,
+    xmax=114,
+    xtick={0,25,50,75,100},
+    symbolic y coords={#2},
+    ytick=data,
+    tick label style={font=\scriptsize},
+    label style={font=\scriptsize},
+    xmajorgrids=true,
+    grid style={dashed, gray!35},
+    nodes near coords={\pgfmathprintnumber{\pgfplotspointmeta}\%},
+    every node near coord/.append style={font=\tiny, anchor=west}
+]
+\addplot[fill=green!55!black, draw=green!70!black] coordinates {#3};
+\end{axis}
+\end{tikzpicture}
+\caption{Porcentaje de avance por hitos: #1.}
+\end{figure}
+}
+
+\title{Boletín | Centro de Inteligencia Artificial e Innovación\\
+       \large Semana del 4 al 11 de noviembre de 2026}
+
+\author{
+  \IEEEauthorblockN{Miguel Ángel Osorio Orduz}
+  \IEEEauthorblockN{Jhoan Sebastian Torres Garcia}
+  \IEEEauthorblockN{Frank Camilo Zuñiga Vargas}
+  \IEEEauthorblockA{Docentes: Carlos Alfonso Pineda Ortiz, Diego Alexander Cruz Melo}
+  \IEEEauthorblockA{
+    Centro de Inteligencia Artificial e Innovación (CIAI)\\
+    Colombia\\
+    mangelosorio@uts.edu.co\\
+    jhoanstorres@uts.edu.co\\
+    fczuniga@uts.edu.co
+  }
+}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+Este boletín recopila los avances verificados en modelos de lenguaje de gran escala (LLM), herramientas abiertas, proyectos institucionales y eventos de la industria tecnológica ocurridos estrictamente entre el 4 y el 11 de noviembre de 2026.
+\end{abstract}
+
+% =========================================================
+\section{Investigación}
+% =========================================================
+
+Durante la semana comprendida entre el 4 y el 11 de noviembre de 2026, los principales laboratorios de inteligencia artificial anunciaron actualizaciones relevantes en arquitectura, despliegue regional, robótica industrial y modelos de razonamiento.
+
+\subsection{OpenAI}
+El 4 de noviembre, OpenAI anunció la adquisición de Pierre Computer Company, Inc., firma creadora de \textit{Code Storage}, con el objetivo de fortalecer las capacidades de \textbf{Codex} en tareas de creación, comprensión y revisión automatizada de código \cite{openai_news_2026}. Un día después, el 5 de noviembre, presentó \textbf{GPT-6 Cyber}, una variante especializada en detección y mitigación de vulnerabilidades de software bajo controles estrictos de contención \cite{openai_gpt6_2026}. Finalmente, el 10 de noviembre publicó el informe \textit{Closing the AI guidance gap in education} sobre adopción institucional en educación \cite{openai_news_2026}, manteniendo en producción activa su familia compuesta por GPT-6 Astra, GPT-6.1 Sol, GPT-6.1 Terra y GPT-6 Luna.
+
+\subsection{Anthropic}
+El 9 de noviembre, Anthropic lanzó oficialmente \textbf{Claude Fable 5.2} y \textbf{Claude Mythos 5.2}, dos variantes derivadas del mismo modelo base diferenciadas por sus niveles de salvaguardas (\textit{safeguard tiers}) para tareas complejas en ingeniería de software, finanzas y ciencias \cite{anthropic_fable_2026}. En el índice de inteligencia de Artificial Analysis, \textit{Claude Fable 5.2 (Max)} alcanzó \textbf{65 puntos}, ubicándose en el primer lugar global, con una tarifa de USD~\$8,00 por millón de tokens de entrada y USD~\$40,00 por millón de tokens de salida \cite{aa_claude_fable_2026}.
+
+\subsection{Google Gemini}
+El 10 de noviembre, Google DeepMind presentó \textbf{Gemini Robotics 2.5}, un modelo visión-lenguaje-acción (VLA) orientado al control robótico industrial, que alcanzó un 96\,\% de éxito en pruebas piloto en líneas de producción de Mercedes-Benz y duplicó la tasa de éxito en más de 200 tareas robóticas complejas \cite{google_robotics_2026}. En esa misma jornada, mediante el \textit{November Pixel Drop}, Google desplegó resúmenes conversacionales multilingües de Gemini (incluido soporte en español) y mejoras en \textit{Call Screen} para la serie Pixel 11 \cite{google_pixel_2026}, manteniendo vigentes en su API los modelos \textit{Gemini 4 Argon}, \textit{Gemini 3.8 Flash} y \textit{Gemini 3.5 Flash-Lite}.
+
+\subsection{Qwen (Alibaba Cloud)}
+El 11 de noviembre, Alibaba Cloud habilitó en Model Studio, Qwen App y Qwen Studio la vista previa de su nuevo modelo insignia \textbf{Qwen4-Max} (\texttt{qwen4-max-preview}), de 2,4 billones de parámetros y con acceso gratuito de prueba en su interfaz web \cite{qwen4_max_2026, llmmaster_qwen4_2026}. Esta arquitectura multimodal nativa (entrada de texto, imagen y video) ofrece una ventana de contexto de \textbf{1 millón de tokens}, una longitud máxima de salida ampliada hasta \textbf{393.000 tokens} y niveles configurables de razonamiento hasta modo \textit{xHigh}, enfocándose en desarrollo de interfaces web, programación compleja, depuración y agentes autónomos \cite{llmmaster_qwen4_2026}. Distribuida inicialmente bajo pesos cerrados —con tarifa anunciada de USD~\$1,50 por millón de tokens de entrada y USD~\$4,50 por millón de tokens de salida—, mantiene como referencia abierta vigente en los benchmarks de Artificial Analysis a \textbf{Qwen3.8-Flash-Next} \cite{qwen4_max_2026, aa_qwen38_2026}.
+
+\subsection{DeepSeek}
+Durante el periodo analizado, DeepSeek consolidó la adopción de \textbf{DeepSeek V4.1 Flash (1017)}, publicado bajo licencia abierta MIT con ventana de contexto de un millón de tokens y tarifas de USD~\$0,30 de entrada y USD~\$1,20 de salida por millón de tokens \cite{aa_deepseek_v41_2026, marfil_deepseek_2026}. A nivel arquitectónico, el modelo totaliza \textbf{763.200 millones de parámetros} (510,30\,GB en pesos originales) combinando un bloque Transformer de mezcla de expertos (40 capas con 384 expertos por capa, de los cuales solo se activan 6 por token) y \textbf{196.600 millones de parámetros en tablas de consulta Engram}, lo que permite descargar dichas tablas directamente a un disco SSD NVMe y ejecutar el modelo en tarjetas gráficas de consumo de 12\,GB de VRAM \cite{marfil_deepseek_2026}.
+
+\subsection{Analítica comparativa de modelos}
+La Tabla~\ref{tab:analitica_llm} consolida los costos por millón de tokens (entrada y salida) y el tiempo hasta el primer token de respuesta (\textit{Time to First Answer Token}, TTFT) verificados en Artificial Analysis al corte del 11 de noviembre de 2026 \cite{aa_claude_fable_2026, aa_gpt61_sol_2026, aa_gpt6_astra_2026, aa_gemini4_argon_2026, aa_gemini38_flash_2026, aa_qwen38_2026, aa_deepseek_v41_2026}. Cabe señalar que en los modelos con razonamiento extendido el TTFT incorpora la fase de pensamiento previo a la emisión de la respuesta.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparativa de costos y latencia (TTFT) verificados en Artificial Analysis (corte al 11 de noviembre de 2026).}
+\label{tab:analitica_llm}
+\scriptsize
+\begin{tabular}{llccc}
+\toprule
+\textbf{Proveedor} & \textbf{Modelo} & \textbf{Input} & \textbf{Output} & \textbf{TTFT} \\
+ & & \textbf{(\$/1M)} & \textbf{(\$/1M)} & \textbf{(s)} \\
+\midrule
+Anthropic & Claude Fable 5.2 (Max) & \$8,00 & \$40,00 & 231,01 \\
+OpenAI & GPT-6.1 Sol (Max) & \$2,00 & \$10,00 & 161,08 \\
+OpenAI & GPT-6 Astra (High) & \$10,00 & \$50,00 & 56,95 \\
+Google & Gemini 4 Argon (High) & \$2,00 & \$10,00 & 45,59 \\
+Google & Gemini 3.8 Flash (High) & \$0,75 & \$3,75 & 19,76 \\
+Qwen & Qwen3.8-Flash-Next & \$0,15 & \$0,47 & 62,69 \\
+DeepSeek & DeepSeek V4.1 Flash (Max) & \$0,30 & \$1,20 & 39,31 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La Fig.~\ref{fig:costos_llm} ilustra visualmente la brecha tarifaria de entrada y salida entre los principales modelos analizados.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=\columnwidth,
+    height=5.4cm,
+    bar width=6.5pt,
+    ylabel={Costo (USD / 1M tokens)},
+    symbolic x coords={Fable 5.2, GPT-6.1 Sol, GPT-6 Astra, Gemini 4, Qwen3.8, DS-V4.1},
+    xtick=data,
+    x tick label style={rotate=28, anchor=east, font=\scriptsize},
+    tick label style={font=\scriptsize},
+    label style={font=\scriptsize},
+    legend style={at={(0.5,1.03)}, anchor=south, legend columns=-1, font=\scriptsize},
+    ymin=0,
+    ymax=58,
+    nodes near coords,
+    every node near coord/.append style={font=\tiny, rotate=90, anchor=west}
+]
+\addplot coordinates {(Fable 5.2,8.00) (GPT-6.1 Sol,2.00) (GPT-6 Astra,10.00) (Gemini 4,2.00) (Qwen3.8,0.15) (DS-V4.1,0.30)};
+\addplot coordinates {(Fable 5.2,40.00) (GPT-6.1 Sol,10.00) (GPT-6 Astra,50.00) (Gemini 4,10.00) (Qwen3.8,0.47) (DS-V4.1,1.20)};
+\legend{Input (\$/1M), Output (\$/1M)}
+\end{axis}
+\end{tikzpicture}
+\caption{Comparación de tarifas de entrada y salida por millón de tokens según Artificial Analysis \cite{aa_claude_fable_2026, aa_gpt61_sol_2026, aa_gpt6_astra_2026, aa_gemini4_argon_2026, aa_qwen38_2026, aa_deepseek_v41_2026}.}
+\label{fig:costos_llm}
+\end{figure}
+
+La Fig.~\ref{fig:ttft_llm} contrasta el tiempo hasta el primer token de respuesta (TTFT) de cada modelo evaluado.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=\columnwidth,
+    height=5.2cm,
+    bar width=11pt,
+    ylabel={TTFT (segundos)},
+    symbolic x coords={Fable 5.2, GPT-6.1 Sol, Qwen3.8, GPT-6 Astra, Gemini 4, DS-V4.1, Gemini 3.8},
+    xtick=data,
+    x tick label style={rotate=28, anchor=east, font=\scriptsize},
+    tick label style={font=\scriptsize},
+    label style={font=\scriptsize},
+    ymajorgrids=true,
+    grid style={dashed, gray!35},
+    ymin=0,
+    ymax=265,
+    nodes near coords,
+    every node near coord/.append style={font=\tiny, anchor=south}
+]
+\addplot[fill=teal!70!black, draw=teal!85!black] coordinates {
+    (Fable 5.2, 231.01)
+    (GPT-6.1 Sol, 161.08)
+    (Qwen3.8, 62.69)
+    (GPT-6 Astra, 56.95)
+    (Gemini 4, 45.59)
+    (DS-V4.1, 39.31)
+    (Gemini 3.8, 19.76)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Comparación del tiempo hasta el primer token de respuesta (TTFT en segundos) según Artificial Analysis al corte del 11 de noviembre de 2026 \cite{aa_claude_fable_2026, aa_gpt61_sol_2026, aa_gpt6_astra_2026, aa_gemini4_argon_2026, aa_gemini38_flash_2026, aa_qwen38_2026, aa_deepseek_v41_2026}.}
+\label{fig:ttft_llm}
+\end{figure}
+
+% =========================================================
+\section{Herramientas}
+% =========================================================
+
+En esta sección se destacan herramientas gratuitas y no comerciales con lanzamientos o actualizaciones relevantes durante la semana.
+
+\subsection{OpenAI Codex CLI}
+\begin{itemize}
+    \item \textbf{Descripción:} Agente de ingeniería de software en terminal escrito en Rust, con soporte nativo para el protocolo MCP (\textit{Model Context Protocol}), habilidades reutilizables y ejecución paralela de subagentes para revisión y generación de código \cite{datacamp_harnesses_2026}.
+    \item \textbf{Tipo:} Herramienta CLI para desarrollo asistido por IA.
+    \item \textbf{Licencia:} Código abierto (Apache-2.0).
+    \item \textbf{Enlace:} \url{https://github.com/openai/codex}
+\end{itemize}
+
+\subsection{OpenClaw (v2026.11.4)}
+\begin{itemize}
+    \item \textbf{Descripción:} Plataforma de automatización personal con soporte multiplataforma (Linux AppImage/DEB, macOS DMG y paquete npm) que integra mensajería y agentes persistentes, con compilación verificada publicada en noviembre de 2026 \cite{openclaw_releases_2026}.
+    \item \textbf{Tipo:} Framework y aplicación de automatización con agentes de IA.
+    \item \textbf{Licencia:} Código abierto (MIT).
+    \item \textbf{Enlace:} \url{https://github.com/openclaw/openclaw}
+\end{itemize}
+
+\subsection{Hermes Agent}
+\begin{itemize}
+    \item \textbf{Descripción:} Entorno (\textit{harness}) de agente autónomo desarrollado por Nous Research enfocado en memoria persistente entre sesiones y síntesis automática de habilidades reutilizables para investigación y desarrollo \cite{datacamp_harnesses_2026}.
+    \item \textbf{Tipo:} Framework de agente autónomo en línea de comandos.
+    \item \textbf{Licencia:} Código abierto (MIT).
+    \item \textbf{Enlace:} \url{https://github.com/NousResearch/hermes-agent}
+\end{itemize}
+
+\subsection{Strata}
+\begin{itemize}
+    \item \textbf{Descripción:} Motor gratuito de inferencia híbrida (GPU, CPU/RAM y lectura directa de SSD NVMe) optimizado para ejecutar modelos de mezcla de expertos de gran escala como DeepSeek V4.1 Flash cuantizados a 1,75, 2,00 y 2,25 bits en tarjetas gráficas de consumo (12\,GB de VRAM y 64\,GB de RAM) \cite{marfil_deepseek_2026}.
+    \item \textbf{Tipo:} Motor de inferencia local híbrida para LLMs.
+    \item \textbf{Licencia:} Software gratuito (disponible en GitHub).
+    \item \textbf{Enlace:} \url{https://youtu.be/hBiUAOpkDNY}
+\end{itemize}
+
+\subsection{Promethevs}
+\begin{itemize}
+    \item \textbf{Descripción:} Motor de inferencia en Windows que ejecuta los pesos originales sin pérdida de DeepSeek V4.1 Flash en GPUs NVIDIA RTX de 12\,GB mediante decodificación especulativa y una técnica de \textit{compresión y corrección} que reconstruye los expertos originales cuando la confianza del token cae bajo el umbral de 0,45 \cite{marfil_deepseek_2026}.
+    \item \textbf{Tipo:} Motor de inferencia exacta en local para Windows.
+    \item \textbf{Licencia:} Código abierto (Apache-2.0).
+    \item \textbf{Enlace:} \url{https://youtu.be/hBiUAOpkDNY}
+\end{itemize}
+
+% =========================================================
+\section{Proyectos CIAI}
+% =========================================================
+
+% Inserción dinámica de avances de proyectos internos del CIAI mediante archivos externos
+% Ejemplo de uso: \input{proyectos/nombre_proyecto}
+
+% =========================================================
+\section{Noticias}
+% =========================================================
+
+\subsection{Controversia directiva en NVIDIA y desplome accionario cercano al 28\,\%}
+Entre el 4 y el 11 de noviembre de 2026, las acciones de NVIDIA (NVDA) registraron una fuerte presión vendedora en el índice NASDAQ, pasando de USD~\$200,13 el 4 de noviembre a USD~\$168,89 el 10 de noviembre (con cierre en USD~\$173,73 el 11 de noviembre), en medio de preocupaciones del mercado sobre la valoración del sector de infraestructura de IA y reportes periodísticos acerca de una investigación interna de la junta directiva sobre presuntos conflictos de interés y relaciones personales del CEO Jensen Huang \cite{nvda_history_2026, cbc_nvidia_2026}. Frente a los máximos semestrales registrados en mayo (USD~\$235,20) y octubre (USD~\$239,24), el retroceso acumulado alcanzó entre el 27,3\,\% y el 29,4\,\% al corte del 11 de noviembre (Fig.~\ref{fig:nvda_6m}) \cite{nvda_history_2026}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\columnwidth,
+    height=5.2cm,
+    ylabel={Precio de cierre (USD)},
+    ymin=155,
+    ymax=255,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    xticklabels={14-May, 26-Jun, 31-Jul, 27-Ago, 30-Sep, 06-Oct, 30-Oct, 05-Nov, 10-Nov, 11-Nov},
+    x tick label style={rotate=35, anchor=east, font=\scriptsize},
+    tick label style={font=\scriptsize},
+    label style={font=\scriptsize},
+    ymajorgrids=true,
+    grid style={dashed, gray!35},
+    every axis plot/.append style={thick}
+]
+% Trayectoria histórica de cierre NVDA (14 mayo - 11 noviembre 2026)
+\addplot[color=blue!75!black, mark=*, mark size=1.5pt] coordinates {
+    (1, 235.20)
+    (2, 192.32)
+    (3, 200.53)
+    (4, 227.73)
+    (5, 228.38)
+    (6, 239.24)
+    (7, 204.64)
+    (8, 181.60)
+    (9, 168.89)
+    (10, 173.73)
+};
+
+% Anotaciones de pico y caída acumulada
+\node[font=\tiny, anchor=south] at (axis cs:6, 239.24) {\$239,24};
+\node[font=\tiny, anchor=north east, text=red!75!black] at (axis cs:9, 168.89) {\$168,89 (-28,2\% vs may.)};
+\end{axis}
+\end{tikzpicture}
+\caption{Evolución del precio de cierre de NVIDIA (NVDA) entre el 14 de mayo y el 11 de noviembre de 2026 según registros históricos de mercado \cite{nvda_history_2026}.}
+\label{fig:nvda_6m}
+\end{figure}
+
+\subsection{Anthropic inicia gira con inversionistas para su OPI}
+El 10 de noviembre de 2026, Anthropic, PBC anunció oficialmente el inicio de su gira institucional (\textit{roadshow}) para su oferta pública inicial (OPI) de acciones ordinarias Clase A, tras haber presentado su declaración de registro Formulario S-1 ante la Comisión de Bolsa y Valores de Estados Unidos (SEC) a finales de octubre \cite{anthropic_ipo_2026}.
+
+\subsection{Panorama regulatorio global supera los 1.170 instrumentos}
+Informes de cumplimiento publicados el 6 de noviembre de 2026 señalan que el ecosistema regulatorio mundial en inteligencia artificial superó los 1.170 instrumentos legislativos y de política pública en 109 países (670 de ellos ya vigentes) \cite{ai_regulation_2026}. El reporte destaca la entrada en fase de cumplimiento del \textit{AI Act} de la Unión Europea y la entrada en vigor en California de obligaciones de transparencia y etiquetado para contenido generado por IA.
+
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+\end{document}
