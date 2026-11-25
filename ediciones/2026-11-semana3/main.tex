@@ -1,0 +1,382 @@
+\documentclass[conference,twocolumn,spanish]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{cite}
+
+% Metadatos internos del documento PDF (incluye derechos y licencia CC BY-NC-ND 4.0)
+\hypersetup{
+    pdftitle={Boletín | Centro de Inteligencia Artificial e Innovación -- 18 al 25 de noviembre de 2026},
+    pdfauthor={Miguel Ángel Osorio Orduz; Jhoan Sebastian Torres Garcia; Frank Camilo Zuñiga Vargas; Docentes: Carlos Alfonso Pineda Ortiz, Diego Alexander Cruz Melo},
+    pdfsubject={Boletín Semanal de Vigilancia Tecnológica en Inteligencia Artificial (CIAI - UTS)},
+    pdfkeywords={Inteligencia Artificial, LLM, CIAI, UTS, Vigilancia Tecnológica, Benchmarks, Gemini 4 Neon, Inkling 2 Mini, GLM-5.4, Claude Ship, NVIDIA, DXY},
+    pdfcreator={LaTeX con clase IEEEtran},
+    pdfproducer={Centro de Inteligencia Artificial e Innovación (CIAI) - Unidades Tecnológicas de Santander},
+    pdfcopyright={Copyright (C) 2026 CIAI - UTS. Licencia Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional (CC BY-NC-ND 4.0).},
+    pdflicenseurl={https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es}
+}
+
+% Configuración de encabezado y pie de página
+% Nota: si compila localmente dentro de ediciones/AAAA-MM/, ajuste la ruta del logo a ../../assets/uts_logonegro.png
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Boletín Semanal CIAI -- 18 al 25 de noviembre de 2026}
+\fancyhead[R]{\includegraphics[height=0.8cm]{assets/uts_logonegro.png}}
+\fancyfoot[L]{\scriptsize \copyright~2026 CIAI -- UTS | Licencia \href{https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es}{CC BY-NC-ND 4.0} (Uso académico, no comercial, sin derivadas)}
+\fancyfoot[R]{\scriptsize \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.2pt}
+
+% Macro dinámica para gráficas de avance (0% a 100%) de los Proyectos CIAI
+% Uso: \graficaavanceproyecto{Título corto}{Hito4,Hito3,Hito2,Hito1}{{(Hito4,0) (Hito3,25) (Hito2,70) (Hito1,100)}}
+\newcommand{\graficaavanceproyecto}[3]{%
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xbar,
+    width=0.92\columnwidth,
+    height=3.6cm,
+    bar width=7pt,
+    xlabel={Porcentaje de avance (\%)},
+    xmin=0,
+    xmax=114,
+    xtick={0,25,50,75,100},
+    symbolic y coords={#2},
+    ytick=data,
+    tick label style={font=\scriptsize},
+    label style={font=\scriptsize},
+    xmajorgrids=true,
+    grid style={dashed, gray!35},
+    nodes near coords={\pgfmathprintnumber{\pgfplotspointmeta}\%},
+    every node near coord/.append style={font=\tiny, anchor=west}
+]
+\addplot[fill=green!55!black, draw=green!70!black] coordinates {#3};
+\end{axis}
+\end{tikzpicture}
+\caption{Porcentaje de avance por hitos: #1.}
+\end{figure}
+}
+
+\title{Boletín | Centro de Inteligencia Artificial e Innovación\\
+       \large Edición Semanal: 18 al 25 de noviembre de 2026}
+
+\author{
+  \IEEEauthorblockN{Miguel Ángel Osorio Orduz}
+  \IEEEauthorblockN{Jhoan Sebastian Torres Garcia}
+  \IEEEauthorblockN{Frank Camilo Zuñiga Vargas}
+  \IEEEauthorblockA{Docentes: Carlos Alfonso Pineda Ortiz, Diego Alexander Cruz Melo}
+  \IEEEauthorblockA{
+    Centro de Inteligencia Artificial e Innovación (CIAI)\\
+    Unidades Tecnológicas de Santander --- Colombia\\
+    mangelosorio@uts.edu.co\\
+    jhoanstorres@uts.edu.co\\
+    fczuniga@uts.edu.co
+  }
+}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+Esta edición del Boletín del Centro de Inteligencia Artificial e Innovación (CIAI) analiza los avances más relevantes del ecosistema global de inteligencia artificial entre el 18 y el 25 de noviembre de 2026. En investigación se examina el debut de Gemini~4~Neon en el segundo puesto del \textit{Artificial Analysis Intelligence Index v5.0.2}, junto con las arquitecturas \textit{Loop Transformer} introducidas por Inkling~2~Mini y GLM-5.4, complementados con comparativas verticales de rendimiento, tarifas API (\textit{Input/Output}) y latencia inicial (\textit{TTFT}). En herramientas se documentan el lanzamiento de Claude~Ship, la extensión \textit{Skills over MCP}, el agente Google~Stitch~Loop y el soporte MCP en openSUSE~Agama~26. En noticias se cubren la restitución de Jensen~Huang como CEO de NVIDIA, el fortalecimiento global del índice dólar (\textit{DXY}) y su impacto en el financiamiento tecnológico, y el inicio de cotización de Anthropic en Nasdaq.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Inteligencia Artificial, LLM, CIAI, UTS, Vigilancia Tecnológica, Artificial Analysis, Gemini 4 Neon, Inkling 2 Mini, GLM-5.4, Claude Ship, NVIDIA, DXY
+\end{IEEEkeywords}
+
+% =========================================================
+\section{Investigación}
+% =========================================================
+
+Entre el 18 y el 25 de noviembre de 2026, el ecosistema de modelos fundacionales estuvo marcado por la consolidación de arquitecturas iterativas de razonamiento (\textit{Loop Transformers}) y una mayor eficiencia de costo por tarea en evaluaciones independientes~\cite{aa_index_2026}.
+
+El 18 de noviembre, Google presentó \textbf{Gemini~4~Neon}, un modelo adaptado de Gemini~4~Carbon orientado a ingeniería de software compleja, flujos agénticos y ciberdefensa con ventana unificada de $1\,\text{M}$ de tokens~\cite{google_neon_blog_2026,deepmind_neon_card_2026}. En el \textit{Artificial Analysis Intelligence Index v5.0.2}, \texttt{Gemini~4~Neon} debutó empatado en el segundo puesto global con $62$ puntos ($61{,}4$ exactos) en esfuerzo máximo (\textit{xhigh}) y $60$ puntos en esfuerzo alto (\textit{high}), ofreciendo tarifas API de $\text{USD}~3{,}00$ por millón de tokens de entrada y $\text{USD}~15{,}00$ de salida ($\text{USD}~6{,}44$ por tarea en \textit{xhigh}), velocidad de $92\,\text{tok/s}$ y un tiempo al primer token de respuesta (\textit{TTFT}) de $60{,}05\,\text{s}$~\cite{aa_index_2026,google_neon_blog_2026}.
+
+En el segmento de pesos abiertos (\textit{open-weights}), Thinking Machines Lab publicó el 20 de noviembre \textbf{Inkling~2~Mini} bajo licencia \texttt{Apache-2.0}~\cite{tml_inkling2mini_2026}. El modelo multimodal cuenta con $26{,}4\,\text{B}$ parámetros totales ($3{,}4\,\text{B}$ únicos activos y $5{,}4\,\text{B}$ efectivos por token mediante tres pasadas compartidas en sus $12$ capas intermedias), atención residual entre bloques, contexto de $1\,\text{M}$ de tokens y una huella de $\approx 20\,\text{GB}$ en precisión mixta \texttt{NVFP4/MXFP8} para ejecución local~\cite{tml_inkling2mini_2026}.
+
+Por su parte, Z.ai anunció el 23 de noviembre \textbf{GLM-5.4}, su primer modelo insignia basado en \textit{Loop Transformer} a escala de $750\,\text{B}$ parámetros~\cite{zai_glm54_2026}. Al ejecutar dos iteraciones sobre un bloque de $28$ capas con caché KV híbrida y reutilización de índices de atención dispersa, alcanza capacidades comparables a modelos de $2\,\text{T}$ a $3\,\text{T}$ de parámetros bajo el paradigma de \textit{Generalized Coding}~\cite{zai_glm54_2026}.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparativa de modelos líderes en Artificial Analysis Intelligence Index v5.0.2 (al 25 de noviembre de 2026)~\cite{aa_index_2026}.}
+\label{tab:aa_modelos_sem3}
+\scriptsize
+\begin{tabularx}{\columnwidth}{@{}l l c c c@{}}
+\toprule
+\textbf{Modelo} & \textbf{Proveedor} & \textbf{Índice} & \textbf{Costo/tarea} & \textbf{Velocidad / Tiempo} \\
+\midrule
+Claude Fable 5.2 (Max) & Anthropic & \textbf{65} & \$26,54 & 40,5 min/tarea \\
+GPT-6.2 Astra (Max)    & OpenAI    & \textbf{62} & \$4,00  & 14,2 min/tarea \\
+Gemini 4 Neon (Xhigh)  & Google    & \textbf{62} & \$6,44  & 92 tok/s (25,6 min) \\
+Gemini 4 Carbon (High) & Google    & \textbf{60} & \$7,76  & 34,5 min/tarea \\
+Claude Opus 5.5 (Max)  & Anthropic & \textbf{59} & \$10,04 & 24,7 min/tarea \\
+GPT-6.2 Sol (Max)      & OpenAI    & \textbf{57} & \$1,01  & 10,0 min/tarea \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La Tabla~\ref{tab:aa_modelos_sem3} y la Fig.~\ref{fig:aa_index_sem3} presentan la clasificación actualizada del \textit{Intelligence Index v5.0.2}~\cite{aa_index_2026}. Asimismo, las Figs.~\ref{fig:aa_precio_io_sem3} y~\ref{fig:aa_ttft_sem3} comparan las tarifas API (\textit{Input/Output}) y la latencia inicial (\textit{TTFT}) de los modelos de referencia~\cite{aa_index_2026}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=0.96\columnwidth,
+    height=4.8cm,
+    bar width=9pt,
+    enlarge x limits=0.14,
+    title={\small\textbf{Artificial Analysis Intelligence Index v5.0.2}},
+    ylabel={\scriptsize Puntaje (mayor es mejor)},
+    symbolic x coords={
+        Claude Fable 5.2,
+        GPT-6.2 Astra,
+        Gemini 4 Neon,
+        Gemini 4 Carbon,
+        Claude Opus 5.5,
+        GPT-6.2 Sol
+    },
+    xtick=data,
+    x tick label style={font=\scriptsize, rotate=32, anchor=east},
+    y tick label style={font=\scriptsize},
+    ymin=0, ymax=76,
+    nodes near coords,
+    nodes near coords style={font=\tiny},
+    ymajorgrids=true,
+    grid style={dashed, gray!35},
+    axis lines*=left
+]
+\addplot[fill=blue!65!black, draw=blue!80!black] coordinates {
+    (Claude Fable 5.2,65)
+    (GPT-6.2 Astra,62)
+    (Gemini 4 Neon,62)
+    (Gemini 4 Carbon,60)
+    (Claude Opus 5.5,59)
+    (GPT-6.2 Sol,57)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Comparativa vertical de puntajes en el Artificial Analysis Intelligence Index v5.0.2 al 25 de noviembre de 2026~\cite{aa_index_2026}.}
+\label{fig:aa_index_sem3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=0.96\columnwidth,
+    height=4.9cm,
+    bar width=5.5pt,
+    enlarge x limits=0.16,
+    title={\small\textbf{Tarifas API: Input vs. Output (Artificial Analysis)}},
+    ylabel={\scriptsize USD / 1M tokens (menor es mejor)},
+    symbolic x coords={
+        Claude Fable 5.2,
+        GPT-6.2 Astra,
+        Gemini 4 Neon,
+        GPT-6.2 Sol,
+        Gemini 4 Hyd.
+    },
+    xtick=data,
+    x tick label style={font=\scriptsize, rotate=30, anchor=east},
+    y tick label style={font=\scriptsize},
+    ymin=0, ymax=48,
+    nodes near coords={\$\pgfmathprintnumber[fixed,precision=1]{\pgfplotspointmeta}},
+    nodes near coords style={font=\tiny},
+    ymajorgrids=true,
+    grid style={dashed, gray!35},
+    axis lines*=left,
+    legend style={at={(0.98,0.96)}, anchor=north east, font=\scriptsize, draw=gray!40}
+]
+\addplot[fill=cyan!70!black, draw=cyan!85!black] coordinates {
+    (Claude Fable 5.2,8.00)
+    (GPT-6.2 Astra,8.00)
+    (Gemini 4 Neon,3.00)
+    (GPT-6.2 Sol,2.00)
+    (Gemini 4 Hyd.,1.50)
+};
+\addplot[fill=orange!80!black, draw=orange!90!black] coordinates {
+    (Claude Fable 5.2,40.00)
+    (GPT-6.2 Astra,40.00)
+    (Gemini 4 Neon,15.00)
+    (GPT-6.2 Sol,10.00)
+    (Gemini 4 Hyd.,7.50)
+};
+\legend{Input, Output}
+\end{axis}
+\end{tikzpicture}
+\caption{Comparativa vertical de tarifas API de entrada (\textit{Input}) y salida (\textit{Output}) por millón de tokens en USD~\cite{aa_index_2026}.}
+\label{fig:aa_precio_io_sem3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=0.96\columnwidth,
+    height=4.7cm,
+    bar width=10pt,
+    enlarge x limits=0.15,
+    title={\small\textbf{Tiempo al Primer Token de Respuesta (TTFT)}},
+    ylabel={\scriptsize Segundos (menor es mejor)},
+    symbolic x coords={
+        Gemini 4 Hyd.,
+        Gemini 4 Neon,
+        GPT-6.2 Sol,
+        GPT-6.2 Astra,
+        Claude Fable 5.2
+    },
+    xtick=data,
+    x tick label style={font=\scriptsize, rotate=30, anchor=east},
+    y tick label style={font=\scriptsize},
+    ymin=0, ymax=248,
+    nodes near coords={\pgfmathprintnumber[fixed,precision=1]{\pgfplotspointmeta}\,s},
+    nodes near coords style={font=\tiny},
+    ymajorgrids=true,
+    grid style={dashed, gray!35},
+    axis lines*=left
+]
+\addplot[fill=violet!70!black, draw=violet!85!black] coordinates {
+    (Gemini 4 Hyd.,44.89)
+    (Gemini 4 Neon,60.05)
+    (GPT-6.2 Sol,66.70)
+    (GPT-6.2 Astra,147.65)
+    (Claude Fable 5.2,214.30)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Comparativa vertical del tiempo hasta el primer token de respuesta (\textit{Time to First Answer Token}) en esfuerzo máximo~\cite{aa_index_2026}.}
+\label{fig:aa_ttft_sem3}
+\end{figure}
+
+% =========================================================
+\section{Herramientas}
+% =========================================================
+
+\subsection{Claude Ship y automatización de pull requests}
+Anthropic lanzó el 23 de noviembre \textbf{Claude~Ship}, un sistema agéntico diseñado para gestionar el ciclo de revisión posterior a la apertura de \textit{pull requests} (PRs) en GitHub~\cite{anthropic_claude_ship_2026,techcrunch_claude_ship_2026}. Integrado mediante los componentes \textit{Code Review}, \textit{PR Steward}, \textit{Claude Approvals} y el comando \texttt{/ship} en la CLI de Claude Code, el sistema detecta fallos en pruebas de integración continua, aplica correcciones de código y aprueba cambios conforme a políticas declarativas definidas por cada equipo~\cite{anthropic_claude_ship_2026}.
+
+\subsection{Skills over MCP, Tasks y Elicitation en el estándar MCP}
+El 24 de noviembre se formalizó la actualización del estándar abierto \textbf{Model Context Protocol (MCP)}, permitiendo que los servidores MCP distribuyan flujos de trabajo reutilizables (\textit{Skills over MCP}), ejecuten tareas asíncronas de larga duración (\textit{Tasks}), soliciten confirmación explícita al usuario ante operaciones críticas (\textit{Elicitation}) y gestionen archivos binarios sin saturar la ventana de contexto del modelo~\cite{anthropic_skills_mcp_2026,codesprint_skills_mcp_2026}.
+
+\subsection{Google Stitch Loop}
+Google Labs presentó \textbf{Stitch~Loop}, un agente de ingeniería continua que conecta el entorno de diseño Stitch con métricas de telemetría en producción y repositorios GitHub~\cite{datastudios_stitch_loop_2026,sharjah24_stitch_loop_2026}. Mediante un ciclo de observación, propuesta, construcción en entornos aislados y apertura de PRs, incorpora auditoría automática de seguridad apoyada en Gemini~4~Carbon y CodeMender~\cite{datastudios_stitch_loop_2026}.
+
+\subsection{Servidor MCP nativo en openSUSE Agama 26}
+En el ámbito del software libre, el proyecto openSUSE incorporó un servidor \textbf{MCP} nativo dentro de \textbf{Agama~26}, su instalador modular de nueva generación~\cite{linuxiac_agama26_mcp_2026}. Esta integración expone las operaciones de particionado, selección de paquetes y configuración de red para que agentes de IA ejecuten despliegues automatizados y reproducibles de sistemas Linux~\cite{linuxiac_agama26_mcp_2026}.
+
+% =========================================================
+\section{Proyectos CIAI}
+% =========================================================
+
+Durante esta semana los semilleros del CIAI continuaron la fase de implementación y pruebas sobre sus respectivos repositorios. No se incorporaron reportes parciales nuevos en esta edición; las actualizaciones de hitos se integrarán de forma modular mediante la macro institucional \verb|\graficaavanceproyecto| en los próximos cortes de seguimiento.
+
+% =========================================================
+\section{Noticias}
+% =========================================================
+
+\subsection{Restitución de Jensen Huang como CEO y repunte histórico de NVIDIA}
+El 23 de noviembre, la junta directiva de NVIDIA restituyó oficialmente a Jensen Huang como presidente, director ejecutivo (CEO) y miembro del consejo con efecto inmediato, once días después de su renuncia del 12 de noviembre~\cite{nvidia_huang_reinstated_2026,guardian_nvidia_huang_2026}. Tras haber descendido hasta $\text{USD}~125{,}53$ el viernes 20 de noviembre ($-14{,}01\%$), los títulos de NVIDIA (\texttt{NVDA}) se dispararon un $+31{,}48\%$ el lunes 23 hasta cerrar en $\text{USD}~165{,}05$ ---su mayor alza diaria desde mayo de 2003, sumando cerca de $\text{USD}~950.000\,\text{millones}$ en valor de mercado en una sola jornada---~\cite{cna_nvidia_comeback_2026,investing_nvda_2026}. El martes 24 retrocedieron un $-5{,}86\%$ a $\text{USD}~155{,}38$ tras anunciarse la creación del cargo de \textit{Chief Compliance Officer} ante el escrutinio regulatorio en Washington (Fig.~\ref{fig:nvda_sem3})~\cite{cna_nvidia_comeback_2026,investing_nvda_2026}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.96\columnwidth,
+    height=4.3cm,
+    title={\small\textbf{Cotización de NVIDIA (NVDA, 18--24 nov 2026)}},
+    ylabel={\scriptsize Precio de cierre (USD)},
+    symbolic x coords={18 nov,19 nov,20 nov,23 nov,24 nov},
+    xtick=data,
+    x tick label style={font=\scriptsize},
+    y tick label style={font=\scriptsize},
+    ymin=118, ymax=175,
+    ymajorgrids=true,
+    grid style={dashed, gray!35},
+    axis lines*=left
+]
+\addplot[
+    color=teal!80!black,
+    thick,
+    mark=square*,
+    mark size=2pt
+] coordinates {
+    (18 nov,150.96)
+    (19 nov,145.98)
+    (20 nov,125.53)
+    (23 nov,165.05)
+    (24 nov,155.38)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Evolución del precio de cierre diario de NVIDIA (NASDAQ: NVDA) entre el 18 y el 24 de noviembre de 2026~\cite{investing_nvda_2026}.}
+\label{fig:nvda_sem3}
+\end{figure}
+
+\subsection{Fortalecimiento global del dólar (DXY) e inversiones tecnológicas}
+Entre el 18 y el 25 de noviembre, el índice dólar estadounidense (\textbf{DXY}), que mide el desempeño del dólar frente a una cesta de seis divisas principales (euro, yen japonés, libra esterlina, dólar canadiense, corona sueca y franco suizo), superó el umbral de los $104$ puntos, alcanzando un máximo de 19 meses en $104{,}32$ el lunes 23 y situándose en $104{,}03$ el miércoles 25 (Fig.~\ref{fig:dxy_sem3})~\cite{tradingeconomics_dxy_2026,forex_dxy_outlook_2026,investing_dxy_2026}. Este repunte, impulsado por las expectativas de endurecimiento monetario de la Reserva Federal y rendimientos de los bonos del Tesoro a 10 años superiores al $5\%$, encarece el financiamiento internacional en dólares para centros de datos y concentra los flujos de inversión tecnológica en activos estadounidenses frente a divisas europeas y asiáticas~\cite{tradingeconomics_dxy_2026,forex_dxy_outlook_2026}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.96\columnwidth,
+    height=4.2cm,
+    title={\small\textbf{Índice Dólar Global DXY (18--25 nov 2026)}},
+    ylabel={\scriptsize Puntos (cesta G6)},
+    symbolic x coords={18 nov,19 nov,20 nov,23 nov,24 nov,25 nov},
+    xtick=data,
+    x tick label style={font=\scriptsize, rotate=25, anchor=east},
+    y tick label style={font=\scriptsize},
+    ymin=103.5, ymax=104.5,
+    ymajorgrids=true,
+    grid style={dashed, gray!35},
+    axis lines*=left
+]
+\addplot[
+    color=blue!75!black,
+    thick,
+    mark=*,
+    mark size=1.8pt
+] coordinates {
+    (18 nov,103.86)
+    (19 nov,103.89)
+    (20 nov,103.81)
+    (23 nov,104.32)
+    (24 nov,103.81)
+    (25 nov,104.03)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Evolución diaria del índice dólar global (\textit{US Dollar Index}, DXY) del 18 al 25 de noviembre de 2026~\cite{investing_dxy_2026}.}
+\label{fig:dxy_sem3}
+\end{figure}
+
+\subsection{Debut bursátil de Anthropic en Nasdaq bajo el símbolo ANT}
+Confirmando el cierre de su colocación inicial, Anthropic comenzó a cotizar en el mercado Nasdaq el 19 de noviembre bajo el símbolo \texttt{ANT} con un precio de oferta de $\text{USD}~83{,}00$ por acción, alcanzando un cierre de $\text{USD}~88{,}91$ el 20 de noviembre ($+7{,}1\%$ sobre su precio de salida) y consolidando una de las mayores captaciones de capital en la historia del sector tecnológico~\cite{markets_anthropic_ant_2026}.
+
+% =========================================================
+\begingroup
+\sloppy
+\emergencystretch=1.5em
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+\endgroup
+
+\end{document}
